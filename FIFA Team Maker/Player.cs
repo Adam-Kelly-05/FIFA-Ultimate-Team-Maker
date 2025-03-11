@@ -3,7 +3,7 @@ using System.Net.Http;
 
 namespace FIFA_Team_Maker
 {
-    TeamData db = new TeamData();
+    //TeamData db = new TeamData();
 
     class Player
     {
@@ -67,6 +67,13 @@ namespace FIFA_Team_Maker
             Nationality = nationality;
             Position = position;
             Photo = photo;
+        }
+
+        public Player(string name, string photo, string nationality)
+        {
+            Name = name;
+            Photo = photo;
+            Nationality = nationality;
         }
 
         public override string ToString()
