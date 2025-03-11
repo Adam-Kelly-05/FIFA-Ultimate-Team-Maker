@@ -11,6 +11,11 @@ namespace FIFA_Team_Maker
     /// </summary>
     public partial class MainWindow : Window
     {
+        int attackerCounter = 0;
+        int midfielderCounter = 0;
+        int defenderCounter = 0;
+        int goalkeeperCounter = 0;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -20,6 +25,34 @@ namespace FIFA_Team_Maker
         {
             string search = SearchBar.Text;
             SearchAPI(search);
+        }
+
+        private void ClearOldResults()
+        {
+            Player1Name_TXTBLK.Text = string.Empty;
+            Player1Country_TXTBLK.Text = string.Empty;
+            Player1Age_TXTBLK.Text = string.Empty;
+            Player1Button.Opacity = 0;
+            Player1Image_IMG.Source = null;
+            Player1Position_TXTBLK.Text = string.Empty;
+
+            Player2Name_TXTBLK.Text = string.Empty;
+            Player2Country_TXTBLK.Text = string.Empty;
+            Player2Age_TXTBLK.Text = string.Empty;
+            Player2Button.Opacity = 0;
+            Player2Image_IMG.Source = null;
+            Player2Position_TXTBLK.Text = string.Empty;
+
+            Player3Name_TXTBLK.Text = string.Empty;
+            Player3Country_TXTBLK.Text = string.Empty;
+            Player3Age_TXTBLK.Text = string.Empty;
+            Player3Button.Opacity = 0;
+            Player3Image_IMG.Source = null;
+            Player3Position_TXTBLK.Text = string.Empty;
+
+            Player1Border_BDR.Opacity = 0;
+            Player2Border_BDR.Opacity = 0;
+            Player3Border_BDR.Opacity = 0;
         }
 
         private async Task SearchAPI(string search)
@@ -68,9 +101,30 @@ namespace FIFA_Team_Maker
             }
         }
 
+        private void AddPlayer(string position, Player player)
+        {
+            if (position == "Attacker")
+            {
+                if (attackerCounter == 0)
+                {
+                    // ADD NAMES TO ALL BOXES ON XAML GUI
+                    // STRIKER1_TXTBLK.TEXT = PLAYER.NAME
+                    //...
+                }
+                //...
+
+                // PUSH THAT TO GITHUB
+            }
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             double budget = double.Parse(Budget_TXTBX.Text);
+        }
+
+        private void Player1Button_Click(object sender, RoutedEventArgs e)
+        {
+            _ = new { Player1Name_TXTBLK.Text, Player1Image_IMG.Source, Player1Position_TXTBLK};
         }
     }
 }

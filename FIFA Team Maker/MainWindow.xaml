@@ -44,8 +44,9 @@
                                 <TextBlock x:Name="Player1Country_TXTBLK"/>
                                 <TextBlock x:Name="Player1Age_TXTBLK"/>
                             </StackPanel>
+                            <Button x:Name="Player1Button" Content="Add Player" Margin="4,73,3,2" Opacity="0" Click="Player1Button_Click"/>
                             <Grid Grid.Column="1">
-                                <Image x:Name="Player1Image_IMG" Source="/Avatar.jpg" Margin="0,0,0,18"/>
+                                <Image x:Name="Player1Image_IMG" Margin="0,0,0,18"/>
                                 <TextBlock x:Name="Player1Position_TXTBLK" Margin="0,77,1,-76"/>
                             </Grid>
                         </Grid>
@@ -61,8 +62,9 @@
                                 <TextBlock x:Name="Player2Country_TXTBLK"/>
                                 <TextBlock x:Name="Player2Age_TXTBLK"/>
                             </StackPanel>
+                            <Button x:Name="Player2Button" Content="Add Player" Margin="4,73,3,2" Opacity="0"/>
                             <Grid Grid.Column="1">
-                                <Image x:Name="Player2Image_IMG" Source="/Avatar.jpg" Margin="0,0,0,18"/>
+                                <Image x:Name="Player2Image_IMG" Margin="0,0,0,18"/>
                                 <TextBlock x:Name="Player2Position_TXTBLK" Margin="0,77,1,-76"/>
                             </Grid>
                         </Grid>
@@ -78,8 +80,9 @@
                                 <TextBlock x:Name="Player3Country_TXTBLK"/>
                                 <TextBlock x:Name="Player3Age_TXTBLK"/>
                             </StackPanel>
+                            <Button x:Name="Player3Button" Content="Add Player" Margin="4,73,3,2" Opacity="0"/>
                             <Grid Grid.Column="1">
-                                <Image x:Name="Player3Image_IMG" Source="/Avatar.jpg" Margin="0,0,0,18"/>
+                                <Image x:Name="Player3Image_IMG" Margin="0,0,0,18"/>
                                 <TextBlock x:Name="Player3Position_TXTBLK" Margin="0,77,1,-76"/>
                             </Grid>
                         </Grid>
