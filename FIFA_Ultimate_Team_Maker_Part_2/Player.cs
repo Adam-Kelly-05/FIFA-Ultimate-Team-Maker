@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
-namespace FIFA_Team_Maker
+namespace FIFA_Ultimate_Team_Maker_Part_2
 {
     //TeamData db = new TeamData();
 

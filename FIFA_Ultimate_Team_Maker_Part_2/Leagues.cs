@@ -1,6 +1,7 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 
-namespace FIFA_Team_Maker
+namespace FIFA_Ultimate_Team_Maker_Part_2
 {
     public class Team
     {
@@ -17,8 +18,8 @@ namespace FIFA_Team_Maker
     {
         public int LeagueId { get; set; }
         public string LeagueName { get; set; }
-        public string LeagueRank { get; set; }
-        public string LeagueValue { get; set; }
+        public int LeagueRank { get; set; }
+        public int LeagueValue { get; set; }
 
         public virtual List<Team> Teams { get; set; }
     }

@@ -1,4 +1,5 @@
-﻿namespace FIFA_Team_Maker
+﻿using System.Collections.Generic;
+namespace FIFA_Ultimate_Team_Maker_Part_2
 {
     class CreatedTeam
     {
@@ -40,7 +41,7 @@
         }
 
         // for printing to json:
-            // for player in Attacker... for player in Midfielders...
-            // Add rating, name, photo to json
+        // for player in Attacker... for player in Midfielders...
+        // Add rating, name, photo to json
     }
 }
