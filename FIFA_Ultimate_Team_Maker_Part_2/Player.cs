@@ -21,19 +21,21 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
             string apiKey = "496d47c537f35ec7b40b14859f19a74e";
             string apiUrl = $"https://v3.football.api-sports.io/players/teams?player={ID}";
 
-            using HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Add("x-rapidapi-key", apiKey);
-            HttpResponseMessage response = await client.GetAsync(apiUrl);
-            string responseString = await response.Content.ReadAsStringAsync();
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("x-rapidapi-key", apiKey);
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                string responseString = await response.Content.ReadAsStringAsync();
 
-            JObject responseJSON = JObject.Parse(responseString);
+                JObject responseJSON = JObject.Parse(responseString);
 
-            JToken player = responseJSON["response"];
+                JToken player = responseJSON["response"];
 
-            string team = player["team"]["name"].ToString();
+                string team = player["team"]["name"].ToString();
 
-            //var query = from t in db.teams
-            //            where 
+                //var query = from t in db.teams
+                //            where 
+            }
         }
 
         private double price;

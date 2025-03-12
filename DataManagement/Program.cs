@@ -1,4 +1,5 @@
-﻿using FIFA_Ultimate_Team_Maker_Part_2;
+﻿using System;
+using FIFA_Ultimate_Team_Maker_Part_2;
 
 namespace DataManagement
 {
@@ -21,6 +22,8 @@ namespace DataManagement
                 League league9 = new League() { LeagueId = 9, LeagueName = "Super Lig", LeagueRank = 9, LeagueValue = 4 };
                 League league10 = new League() { LeagueId = 10, LeagueName = "Major League Soccer", LeagueRank = 10, LeagueValue = 2 };
 
+                Console.WriteLine("Leagues Made");
+
                 db.Leagues.Add(league1);
                 db.Leagues.Add(league2);
                 db.Leagues.Add(league3);
@@ -31,6 +34,8 @@ namespace DataManagement
                 db.Leagues.Add(league8);
                 db.Leagues.Add(league9);
                 db.Leagues.Add(league10);
+
+                Console.WriteLine("Leagues Added");
 
                 Team team1 = new Team() { TeamId = 1, TeamName = "Manchester City", Ranking = 1, Value = 20, League = league1, LeagueID = 1 };
                 Team team2 = new Team() { TeamId = 2, TeamName = "Arsenal", Ranking = 2, Value = 19, League = league1, LeagueID = 1 };
@@ -241,6 +246,8 @@ namespace DataManagement
                 Team team196 = new Team() { TeamId = 196, TeamName = "Chicago Fire FC", Ranking = 28, Value = 1, League = league10, LeagueID = 10 };
                 Team team197 = new Team() { TeamId = 197, TeamName = "San Jose Earthquakes", Ranking = 29, Value = 1, League = league10, LeagueID = 10 };
 
+                Console.WriteLine("Teams Made");
+
                 db.Teams.Add(team1);
                 db.Teams.Add(team2);
                 db.Teams.Add(team3);
@@ -439,7 +446,11 @@ namespace DataManagement
                 db.Teams.Add(team196);
                 db.Teams.Add(team197);
 
+                Console.WriteLine("Teams Added");
+
                 db.SaveChanges();
+
+                Console.WriteLine("Saved Databases");
             }
         }
     }
