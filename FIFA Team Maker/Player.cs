@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Net.Http;
+using System.Windows.Media.Imaging;
 
 namespace FIFA_Team_Maker
 {
@@ -9,10 +10,8 @@ namespace FIFA_Team_Maker
     {
         public string ID { get; set; }
         public string Name { get; set; }
-        public string Nationality { get; set; }
-        public int Age { get; set; }
+        public BitmapImage Photo { get; set; }
         public string Position { get; set; }
-        public string Photo { get; set; } // From Football API
         public string Team { get; set; }
 
         private async Task APICalls()
@@ -41,9 +40,7 @@ namespace FIFA_Team_Maker
             get { return price; }
             set
             {
-
-
-                price = value;
+                price = 0;
 
                 // List of all countries, use players id to search their team, ignore the team if it's in the list of countries
                 // Then use database to fill formula
@@ -56,24 +53,15 @@ namespace FIFA_Team_Maker
             get { return rating; }
             set
             {
-                rating = Math.Floor((0.6 * price) + 40); // 40 is the min rating and 100 is the max rating
+                rating = Math.Floor((0.6 * price) + 40);
             }
         }
 
-        public Player(string name, string nationality, int age, string position, string photo)
+        public Player(string name, BitmapImage photo, string position)
         {
             Name = name;
-            Age = age;
-            Nationality = nationality;
+            Photo = photo;
             Position = position;
-            Photo = photo;
-        }
-
-        public Player(string name, string photo, string nationality)
-        {
-            Name = name;
-            Photo = photo;
-            Nationality = nationality;
         }
 
         public override string ToString()

@@ -2,10 +2,10 @@
 {
     class CreatedTeam
     {
-        public List<Player> Attackers { get; set; }
-        public List<Player> Midfielders { get; }
-        public List<Player> Defenders { get; set; }
-        public List<Player> Goalkeepers { get; set; }
+        public List<Player> Attackers { get; set; } = new List<Player>();
+        public List<Player> Midfielders { get; } = new List<Player>();
+        public List<Player> Defenders { get; set; } = new List<Player>();
+        public List<Player> Goalkeepers { get; set; } = new List<Player>();
 
         public void AddPlayer(Player player)
         {

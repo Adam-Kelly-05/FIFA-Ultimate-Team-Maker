@@ -13,7 +13,7 @@
                 <TextBlock HorizontalAlignment="Center" Margin="0,111,0,0" TextWrapping="Wrap" Text="FIFA Ultimate Team Maker" VerticalAlignment="Top" FontWeight="Bold" FontSize="34"/>
                 <TextBlock HorizontalAlignment="Center" Margin="0,164,0,0" TextWrapping="Wrap" Text="Enter Your Budget In Millions (0 is unlimited)" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
                 <TextBox x:Name="Budget_TXTBX" HorizontalAlignment="Center" Margin="0,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" FontSize="18"/>
-                <Button Content="Start Game" HorizontalAlignment="Center" Margin="0,224,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="122" FontSize="18" Click="Button_Click"/>
+                <Button x:Name="StartGame_BTN" Content="Start Game" HorizontalAlignment="Center" Margin="0,224,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="122" FontSize="18" Click="StartGame_BTN_Click"/>
             </Grid>
         </TabItem>
         <TabItem Name="MainScreen" Header="Main Screen">
@@ -44,7 +44,7 @@
                                 <TextBlock x:Name="Player1Country_TXTBLK"/>
                                 <TextBlock x:Name="Player1Age_TXTBLK"/>
                             </StackPanel>
-                            <Button x:Name="Player1Button" Content="Add Player" Margin="4,73,3,2" Opacity="0" Click="Player1Button_Click"/>
+                            <Button x:Name="Player1_BTN" Content="Add Player" Margin="4,67,3,2" Opacity="0" Click="Player1_BTN_Click"/>
                             <Grid Grid.Column="1">
                                 <Image x:Name="Player1Image_IMG" Margin="0,0,0,18"/>
                                 <TextBlock x:Name="Player1Position_TXTBLK" Margin="0,77,1,-76"/>
@@ -62,7 +62,7 @@
                                 <TextBlock x:Name="Player2Country_TXTBLK"/>
                                 <TextBlock x:Name="Player2Age_TXTBLK"/>
                             </StackPanel>
-                            <Button x:Name="Player2Button" Content="Add Player" Margin="4,73,3,2" Opacity="0"/>
+                            <Button x:Name="Player2_BTN" Content="Add Player" Margin="4,67,3,2" Opacity="0" Click="Player2_BTN_Click"/>
                             <Grid Grid.Column="1">
                                 <Image x:Name="Player2Image_IMG" Margin="0,0,0,18"/>
                                 <TextBlock x:Name="Player2Position_TXTBLK" Margin="0,77,1,-76"/>
@@ -80,7 +80,7 @@
                                 <TextBlock x:Name="Player3Country_TXTBLK"/>
                                 <TextBlock x:Name="Player3Age_TXTBLK"/>
                             </StackPanel>
-                            <Button x:Name="Player3Button" Content="Add Player" Margin="4,73,3,2" Opacity="0"/>
+                            <Button x:Name="Player3_BTN" Content="Add Player" Margin="4,67,3,2" Opacity="0" Click="Player3_BTN_Click"/>
                             <Grid Grid.Column="1">
                                 <Image x:Name="Player3Image_IMG" Margin="0,0,0,18"/>
                                 <TextBlock x:Name="Player3Position_TXTBLK" Margin="0,77,1,-76"/>
@@ -106,103 +106,103 @@
                         <ColumnDefinition Width="11*"/>
                         <ColumnDefinition Width="11*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock x:Name="ST1_TXTBLK" TextWrapping="Wrap" Text="ST" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="12,0,12,0" Grid.Column="2" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="ST1_REC" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
-                    <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="0" Grid.Column="4">
-                        <StackPanel>
-                            <TextBox Text="99" TextAlignment="Right"/>
-                            <Image Source="/Avatar.jpg"/>
-                            <TextBox Text="Player" TextAlignment="Right"/>
-                        </StackPanel>
-                    </Border>
-                    <TextBlock x:Name="ST2_TXTBLK" TextWrapping="Wrap" Text="ST" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="12,0,12,0" Grid.Column="4" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="ST2_REC" Grid.Column="4" Grid.Row="0" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <TextBlock x:Name="ST1OVERLAY_TXTBLK" TextWrapping="Wrap" Text="ST" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="12,0,12,0" Grid.Column="2" Panel.ZIndex="2"/>
+                    <Rectangle x:Name="ST1OVERLAY_REC" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="0" Grid.Column="2">
                         <StackPanel>
-                            <TextBox Text="99" TextAlignment="Right"/>
-                            <Image Source="/Avatar.jpg"/>
-                            <TextBox Text="Player" TextAlignment="Right"/>
+                            <TextBox x:Name="ST1_RATING" Text="99" TextAlignment="Right"/>
+                            <Image x:Name="ST1_IMG" Width="61" Height="51" Margin="0,2,0,0"/>
+                            <TextBox x:Name="ST1_NAME" Text="Player" TextAlignment="Left"/>
                         </StackPanel>
                     </Border>
-                    <TextBlock x:Name="ST3_TXTBLK" TextWrapping="Wrap" Text="ST" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="12,0,12,0" Grid.Column="6" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="ST3_REC" Grid.Column="6" Grid.Row="0" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <TextBlock x:Name="ST2OVERLAY_TXTBLK" TextWrapping="Wrap" Text="ST" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="12,0,12,0" Grid.Column="4" Panel.ZIndex="2"/>
+                    <Rectangle x:Name="ST2OVERLAY_REC" Grid.Column="4" Grid.Row="0" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="0" Grid.Column="4">
+                        <StackPanel>
+                            <TextBox x:Name="ST2_RATING" Text="99" TextAlignment="Right"/>
+                            <Image x:Name="ST2_IMG" Width="61" Height="61"/>
+                            <TextBox x:Name="ST2_NAME" Text="Player" TextAlignment="Left"/>
+                        </StackPanel>
+                    </Border>
+                    <TextBlock x:Name="ST3OVERLAY_TXTBLK" TextWrapping="Wrap" Text="ST" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="12,0,12,0" Grid.Column="6" Panel.ZIndex="2"/>
+                    <Rectangle x:Name="ST3OVERLAY_REC" Grid.Column="6" Grid.Row="0" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="0" Grid.Column="6">
                         <StackPanel>
-                            <TextBox Text="99" TextAlignment="Right"/>
-                            <Image Source="/Avatar.jpg"/>
-                            <TextBox Text="Player" TextAlignment="Right"/>
+                            <TextBox x:Name="ST3_RATING" Text="99" TextAlignment="Right"/>
+                            <Image x:Name="ST3_IMG"/>
+                            <TextBox x:Name="ST3_NAME" Text="Player" TextAlignment="Left"/>
                         </StackPanel>
                     </Border>
-                    <TextBlock x:Name="MF1_TXTBLK" TextWrapping="Wrap" Text="MF" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="5,0,5,0" Grid.Column="2" Grid.Row="1" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="MF1_REC" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <TextBlock x:Name="MF1OVERLAY_TXTBLK" TextWrapping="Wrap" Text="MF" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="5,0,5,0" Grid.Column="2" Grid.Row="1" Panel.ZIndex="2"/>
+                    <Rectangle x:Name="MF1OVERLAY_REC" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="1" Grid.Column="2">
                         <StackPanel>
-                            <TextBox Text="99" TextAlignment="Right"/>
-                            <Image Source="/Avatar.jpg"/>
-                            <TextBox Text="Player" TextAlignment="Right"/>
+                            <TextBox x:Name="MF1_RATING" Text="99" TextAlignment="Right"/>
+                            <Image x:Name="MF1_IMG"/>
+                            <TextBox x:Name="MF1_NAME" Text="Player" TextAlignment="Left"/>
                         </StackPanel>
                     </Border>
-                    <TextBlock x:Name="MF2_TXTBLK" TextWrapping="Wrap" Text="MF" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="5,0,5,0" Grid.Column="4" Grid.Row="1" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="MF2_REC" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <TextBlock x:Name="MF2OVERLAY_TXTBLK" TextWrapping="Wrap" Text="MF" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="5,0,5,0" Grid.Column="4" Grid.Row="1" Panel.ZIndex="2"/>
+                    <Rectangle x:Name="MF2OVERLAY_REC" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="1" Grid.Column="4">
                         <StackPanel>
-                            <TextBox Text="99" TextAlignment="Right"/>
-                            <Image Source="/Avatar.jpg"/>
-                            <TextBox Text="Player" TextAlignment="Right"/>
+                            <TextBox x:Name="MF2_RATING" Text="99" TextAlignment="Right"/>
+                            <Image x:Name="MF2_IMG"/>
+                            <TextBox x:Name="MF2_NAME" Text="Player" TextAlignment="Left"/>
                         </StackPanel>
                     </Border>
-                    <TextBlock x:Name="MF3_TXTBLK" TextWrapping="Wrap" Text="MF" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="5,0,5,0" Grid.Column="6" Grid.Row="1" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="MF3_REC" Grid.Column="6" Grid.Row="1" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <TextBlock x:Name="MF3OVERLAY_TXTBLK" TextWrapping="Wrap" Text="MF" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="5,0,5,0" Grid.Column="6" Grid.Row="1" Panel.ZIndex="2"/>
+                    <Rectangle x:Name="MF3OVERLAY_REC" Grid.Column="6" Grid.Row="1" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="1" Grid.Column="6">
                         <StackPanel>
-                            <TextBox Text="99" TextAlignment="Right"/>
-                            <Image Source="/Avatar.jpg"/>
-                            <TextBox Text="Player" TextAlignment="Right"/>
+                            <TextBox x:Name="MF3_RATING" Text="99" TextAlignment="Right"/>
+                            <Image x:Name="MF3_IMG"/>
+                            <TextBox x:Name="MF3_NAME" Text="Player" TextAlignment="Left"/>
                         </StackPanel>
                     </Border>
-                    <TextBlock x:Name="DEF1_TXTBLK" TextWrapping="Wrap" Text="DEF" VerticalAlignment="Center" FontWeight="Bold" FontSize="29" Margin="5,0,5,0" Grid.Column="1" Grid.Row="2" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="DEF1_REC" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <TextBlock x:Name="DEF1OVERLAY_TXTBLK" TextWrapping="Wrap" Text="DEF" VerticalAlignment="Center" FontWeight="Bold" FontSize="29" Margin="5,0,5,0" Grid.Column="1" Grid.Row="2" Panel.ZIndex="2"/>
+                    <Rectangle x:Name="DEF1OVERLAY_REC" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="2" Grid.Column="1">
                         <StackPanel>
-                            <TextBox Text="99" TextAlignment="Right"/>
-                            <Image Source="/Avatar.jpg"/>
-                            <TextBox Text="Player" TextAlignment="Right"/>
+                            <TextBox x:Name="DEF1_RATING" Text="99" TextAlignment="Right"/>
+                            <Image x:Name="DEF1_IMG"/>
+                            <TextBox x:Name="DEF1_NAME" Text="Player" TextAlignment="Left"/>
                         </StackPanel>
                     </Border>
-                    <TextBlock x:Name="DEF2_TXTBLK" TextWrapping="Wrap" Text="DEF" VerticalAlignment="Center" FontWeight="Bold" FontSize="29" Margin="5,0,5,0" Grid.Column="3" Grid.Row="2" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="DEF2_REC" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <TextBlock x:Name="DEF2OVERLAY_TXTBLK" TextWrapping="Wrap" Text="DEF" VerticalAlignment="Center" FontWeight="Bold" FontSize="29" Margin="5,0,5,0" Grid.Column="3" Grid.Row="2" Panel.ZIndex="2"/>
+                    <Rectangle x:Name="DEF2OVERLAY_REC" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="2" Grid.Column="3">
                         <StackPanel>
-                            <TextBox Text="99" TextAlignment="Right"/>
-                            <Image Source="/Avatar.jpg"/>
-                            <TextBox Text="Player" TextAlignment="Right"/>
+                            <TextBox x:Name="DEF2_RATING" Text="99" TextAlignment="Right"/>
+                            <Image x:Name="DEF2_IMG"/>
+                            <TextBox x:Name="DEF2_NAME" Text="Player" TextAlignment="Left"/>
                         </StackPanel>
                     </Border>
-                    <TextBlock x:Name="DEF3_TXTBLK" TextWrapping="Wrap" Text="DEF" VerticalAlignment="Center" FontWeight="Bold" FontSize="29" Margin="5,0,5,0" Grid.Column="5" Grid.Row="2" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="DEF3_REC" Grid.Column="5" Grid.Row="2" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <TextBlock x:Name="DEF3OVERLAY_TXTBLK" TextWrapping="Wrap" Text="DEF" VerticalAlignment="Center" FontWeight="Bold" FontSize="29" Margin="5,0,5,0" Grid.Column="5" Grid.Row="2" Panel.ZIndex="2"/>
+                    <Rectangle x:Name="DEF3OVERLAY_REC" Grid.Column="5" Grid.Row="2" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="2" Grid.Column="5">
                         <StackPanel>
-                            <TextBox Text="99" TextAlignment="Right"/>
-                            <Image Source="/Avatar.jpg"/>
-                            <TextBox Text="Player" TextAlignment="Right"/>
+                            <TextBox x:Name="DEF3_RATING" Text="99" TextAlignment="Right"/>
+                            <Image x:Name="DEF3_IMG"/>
+                            <TextBox x:Name="DEF3_NAME" Text="Player" TextAlignment="Left"/>
                         </StackPanel>
                     </Border>
-                    <TextBlock x:Name="DEF4_TXTBLK" TextWrapping="Wrap" Text="DEF" VerticalAlignment="Center" FontWeight="Bold" FontSize="29" Margin="5,0,5,0" Grid.Column="7" Grid.Row="2" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="DEF4_REC" Grid.Column="7" Grid.Row="2" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <TextBlock x:Name="DEF4OVERLAY_TXTBLK" TextWrapping="Wrap" Text="DEF" VerticalAlignment="Center" FontWeight="Bold" FontSize="29" Margin="5,0,5,0" Grid.Column="7" Grid.Row="2" Panel.ZIndex="2"/>
+                    <Rectangle x:Name="DEF4OVERLAY_REC" Grid.Column="7" Grid.Row="2" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="2" Grid.Column="7">
                         <StackPanel>
-                            <TextBox Text="99" TextAlignment="Right"/>
-                            <Image Source="/Avatar.jpg"/>
-                            <TextBox Text="Player" TextAlignment="Right"/>
+                            <TextBox x:Name="DEF4_RATING" Text="99" TextAlignment="Right"/>
+                            <Image x:Name="DEF4_IMG"/>
+                            <TextBox x:Name="DEF4_NAME" Text="Player" TextAlignment="Left"/>
                         </StackPanel>
                     </Border>
-                    <TextBlock x:Name="GK1_TXTBLK" TextWrapping="Wrap" Text="GK" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="5,0,5,0" Grid.Column="4" Grid.Row="3" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="GK1_REC" Grid.Column="4" Grid.Row="3" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <TextBlock x:Name="GK1OVERLAY_TXTBLK" TextWrapping="Wrap" Text="GK" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="5,0,5,0" Grid.Column="4" Grid.Row="3" Panel.ZIndex="2"/>
+                    <Rectangle x:Name="GK1OVERLAY_REC" Grid.Column="4" Grid.Row="3" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="5" Grid.Column="4">
                         <StackPanel>
-                            <TextBox Text="99" TextAlignment="Right"/>
-                            <Image Source="/Avatar.jpg"/>
-                            <TextBox Text="Player" TextAlignment="Right"/>
+                            <TextBox x:Name="GK1_RATING" Text="99" TextAlignment="Right"/>
+                            <Image x:Name="GK1_IMG"/>
+                            <TextBox x:Name="GK1_NAME" Text="Player" TextAlignment="Left"/>
                         </StackPanel>
                     </Border>
                 </Grid>
