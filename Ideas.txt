@@ -1,1 +1,0 @@
-put "ST" textbox over entire box, when the box is clicked make the z index from 100 to -100, so it dissapears
