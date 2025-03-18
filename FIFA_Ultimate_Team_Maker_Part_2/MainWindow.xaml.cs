@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
@@ -239,17 +240,20 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
         {
             LeagueData db = new LeagueData();
 
-            var teamPositionValue = from t in db.Teams
-                                    where t.TeamName == playersTeam
-                                    select t.Value;
+            var teamPositionValue = db.Teams
+                                      .Where(t => t.TeamName == playersTeam)
+                                      .Select(t => t.Value)
+                                      .FirstOrDefault();
 
-            var league = from t in db.Teams
-                         where t.TeamName == playersTeam
-                         select t.LeagueID;
+            var league = db.Teams
+                           .Where(t => t.TeamName == playersTeam)
+                           .Select(t => t.LeagueID)
+                           .FirstOrDefault();
 
-            var leagueValue = from l in db.Leagues
-                              where l.LeagueId == league.FirstOrDefault()
-                              select l.LeagueValue;
+            var leagueValue = db.Leagues
+                                .Where(l => l.LeagueId == league)
+                                .Select(l => l.LeagueValue)
+                                .FirstOrDefault();
 
             int positionValue = 1;
             switch (playersPosition)
@@ -270,7 +274,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                     break;
             }
 
-            return 0.1 * teamPositionValue.FirstOrDefault() * leagueValue.FirstOrDefault() * positionValue;
+            return 0.1 * teamPositionValue * leagueValue * positionValue;
         }
 
         private async Task<double> GetPlayerPrice(string playersID, string playersPosition)
@@ -294,10 +298,10 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
             }
         }
 
-        private async Task Search_BTN_ClickAsync(object sender, RoutedEventArgs e)
+        private void Search_BTN_Click(object sender, RoutedEventArgs e)
         {
             string search = SearchBar.Text;
-            await GetTopThreePlayers(search);
+            GetTopThreePlayers(search);
         }
 
         private async void Player1_BTN_Click(object sender, RoutedEventArgs e)
