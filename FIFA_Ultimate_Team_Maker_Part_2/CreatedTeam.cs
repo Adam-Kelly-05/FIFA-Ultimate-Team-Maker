@@ -3,6 +3,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
 {
     class CreatedTeam
     {
+        public List<Player> AllPlayers { get; set; } = new List<Player>();
         public List<Player> Attackers { get; set; } = new List<Player>();
         public List<Player> Midfielders { get; } = new List<Player>();
         public List<Player> Defenders { get; set; } = new List<Player>();
@@ -15,6 +16,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                 if (Attackers.Count < 3)
                 {
                     Attackers.Add(player);
+                    AllPlayers.Add(player);
                 }
             }
             else if (player.Position == "Midfielder")
@@ -22,6 +24,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                 if (Midfielders.Count < 3)
                 {
                     Midfielders.Add(player);
+                    AllPlayers.Add(player);
                 }
             }
             else if (player.Position == "Defender")
@@ -29,6 +32,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                 if (Defenders.Count < 4)
                 {
                     Defenders.Add(player);
+                    AllPlayers.Add(player);
                 }
             }
             else if (player.Position == "Goalkeeper")
@@ -36,8 +40,29 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                 if (Goalkeepers.Count < 1)
                 {
                     Goalkeepers.Add(player);
+                    AllPlayers.Add(player);
                 }
             }
+        }
+
+        public double GetTeamPrice()
+        {
+            double totalTeamValue = 0;
+            foreach (Player person in AllPlayers)
+            {
+                totalTeamValue += person.Price;
+            }
+            return totalTeamValue;
+        }
+
+        public double GetTeamScore()
+        {
+            double totalScoreValue = 0;
+            foreach (Player person in AllPlayers)
+            {
+                totalScoreValue += person.Rating;
+            }
+            return totalScoreValue;
         }
 
         // for printing to json:
