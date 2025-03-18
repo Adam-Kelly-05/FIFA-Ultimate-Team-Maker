@@ -31,6 +31,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
             Player1Name_TXTBLK.Text = string.Empty;
             Player1Country_TXTBLK.Text = string.Empty;
             Player1Age_TXTBLK.Text = string.Empty;
+            Player1ID_TXTBLK.Text = string.Empty;
             Player1_BTN.Opacity = 0;
             Player1Image_IMG.Source = null;
             Player1Position_TXTBLK.Text = string.Empty;
@@ -39,6 +40,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
             Player2Name_TXTBLK.Text = string.Empty;
             Player2Country_TXTBLK.Text = string.Empty;
             Player2Age_TXTBLK.Text = string.Empty;
+            Player2ID_TXTBLK.Text = string.Empty;
             Player2_BTN.Opacity = 0;
             Player2Image_IMG.Source = null;
             Player2Position_TXTBLK.Text = string.Empty;
@@ -47,7 +49,8 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
             Player3Name_TXTBLK.Text = string.Empty;
             Player3Country_TXTBLK.Text = string.Empty;
             Player3Age_TXTBLK.Text = string.Empty;
-            Player2_BTN.Opacity = 0;
+            Player3ID_TXTBLK.Text = string.Empty;
+            Player3_BTN.Opacity = 0;
             Player3Image_IMG.Source = null;
             Player3Position_TXTBLK.Text = string.Empty;
             Player3Border_BDR.Opacity = 0;
@@ -176,7 +179,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
             double budget = double.Parse(Budget_TXTBX.Text);
         }
 
-        private async Task SearchAPI(string search)
+        private async Task GetTopThreePlayers(string search)
         {
             string apiKey = "496d47c537f35ec7b40b14859f19a74e";
             string apiUrl = $"https://v3.football.api-sports.io/players/profiles?search={search.Replace(" ", "%20")}";
@@ -232,25 +235,87 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
             }
         }
 
-        private void Search_BTN_Click(object sender, RoutedEventArgs e)
+        private double CalculatePlayerPrice(string playersTeam, string playersPosition)
+        {
+            LeagueData db = new LeagueData();
+
+            var teamPositionValue = from t in db.Teams
+                                    where t.TeamName == playersTeam
+                                    select t.Value;
+
+            var league = from t in db.Teams
+                         where t.TeamName == playersTeam
+                         select t.LeagueID;
+
+            var leagueValue = from l in db.Leagues
+                              where l.LeagueId == league.FirstOrDefault()
+                              select l.LeagueValue;
+
+            int positionValue = 1;
+            switch (playersPosition)
+            {
+                case "Forward":
+                    positionValue = 20;
+                    break;
+                case "Midfielder":
+                    positionValue = 14;
+                    break;
+                case "Defender":
+                    positionValue = 7;
+                    break;
+                case "Goalkeeper":
+                    positionValue = 1;
+                    break;
+                default:
+                    break;
+            }
+
+            return 0.1 * teamPositionValue.FirstOrDefault() * leagueValue.FirstOrDefault() * positionValue;
+        }
+
+        private async Task<double> GetPlayerPrice(string playersID, string playersPosition)
+        {
+            string apiKey = "496d47c537f35ec7b40b14859f19a74e";
+            string apiUrl = $"https://v3.football.api-sports.io/players/teams?player={playersID}";
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("x-rapidapi-key", apiKey);
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                string responseString = await response.Content.ReadAsStringAsync();
+
+                JObject responseJSON = JObject.Parse(responseString);
+
+                JToken player = responseJSON["response"];
+
+                string playersTeam = player["team"]["name"].ToString();
+
+                return CalculatePlayerPrice(playersTeam, playersPosition);
+            }
+        }
+
+        private async Task Search_BTN_ClickAsync(object sender, RoutedEventArgs e)
         {
             string search = SearchBar.Text;
-            SearchAPI(search);
+            await GetTopThreePlayers(search);
         }
 
-        private void Player1_BTN_Click(object sender, RoutedEventArgs e)
+        private async void Player1_BTN_Click(object sender, RoutedEventArgs e)
         {
-            AddPlayer(new Player(Player1Name_TXTBLK.Text, (BitmapImage)Player1Image_IMG.Source, Player1Position_TXTBLK.Text));
+            double price = await GetPlayerPrice(Player1ID_TXTBLK.Text, Player1Position_TXTBLK.Text);
+            AddPlayer(new Player(Player1Name_TXTBLK.Text, (BitmapImage)Player1Image_IMG.Source, Player1Position_TXTBLK.Text, price));
         }
 
-        private void Player2_BTN_Click(object sender, RoutedEventArgs e)
+        private async void Player2_BTN_Click(object sender, RoutedEventArgs e)
         {
-            AddPlayer(new Player(Player2Name_TXTBLK.Text, (BitmapImage)Player2Image_IMG.Source, Player2Position_TXTBLK.Text));
+            double price = await GetPlayerPrice(Player2ID_TXTBLK.Text, Player2Position_TXTBLK.Text);
+            AddPlayer(new Player(Player2Name_TXTBLK.Text, (BitmapImage)Player2Image_IMG.Source, Player2Position_TXTBLK.Text, price));
         }
 
-        private void Player3_BTN_Click(object sender, RoutedEventArgs e)
+        private async void Player3_BTN_Click(object sender, RoutedEventArgs e)
         {
-            AddPlayer(new Player(Player3Name_TXTBLK.Text, (BitmapImage)Player3Image_IMG.Source, Player3Position_TXTBLK.Text));
+            double price = await GetPlayerPrice(Player2ID_TXTBLK.Text, Player3Position_TXTBLK.Text);
+            AddPlayer(new Player(Player3Name_TXTBLK.Text, (BitmapImage)Player3Image_IMG.Source, Player3Position_TXTBLK.Text, price));
         }
     }
 

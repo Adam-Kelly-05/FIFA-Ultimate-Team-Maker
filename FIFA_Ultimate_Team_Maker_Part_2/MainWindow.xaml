@@ -42,6 +42,7 @@
                                 <TextBlock x:Name="Player1Name_TXTBLK"/>
                                 <TextBlock x:Name="Player1Country_TXTBLK"/>
                                 <TextBlock x:Name="Player1Age_TXTBLK"/>
+                                <TextBlock x:Name="Player1ID_TXTBLK"/>
                             </StackPanel>
                             <Button x:Name="Player1_BTN" Content="Add Player" Margin="4,67,3,2" Opacity="0" Click="Player1_BTN_Click"/>
                             <Grid Grid.Column="1">
@@ -60,6 +61,7 @@
                                 <TextBlock x:Name="Player2Name_TXTBLK"/>
                                 <TextBlock x:Name="Player2Country_TXTBLK"/>
                                 <TextBlock x:Name="Player2Age_TXTBLK"/>
+                                <TextBlock x:Name="Player2ID_TXTBLK"/>
                             </StackPanel>
                             <Button x:Name="Player2_BTN" Content="Add Player" Margin="4,67,3,2" Opacity="0" Click="Player2_BTN_Click"/>
                             <Grid Grid.Column="1">
@@ -78,6 +80,7 @@
                                 <TextBlock x:Name="Player3Name_TXTBLK"/>
                                 <TextBlock x:Name="Player3Country_TXTBLK"/>
                                 <TextBlock x:Name="Player3Age_TXTBLK"/>
+                                <TextBlock x:Name="Player3ID_TXTBLK"/>
                             </StackPanel>
                             <Button x:Name="Player3_BTN" Content="Add Player" Margin="4,67,3,2" Opacity="0" Click="Player3_BTN_Click"/>
                             <Grid Grid.Column="1">
