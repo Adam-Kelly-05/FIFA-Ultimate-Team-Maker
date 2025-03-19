@@ -298,6 +298,13 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
             }
         }
 
+        private void AddPlayerAndStatsTotals(Player player)
+        {
+            AddPlayer(player);
+            TeamScore_TXTBLK.Text += int.Parse(TeamScore_TXTBLK.Text) + player.Rating;
+            TeamValue_TXTBLK.Text += int.Parse(TeamValue_TXTBLK.Text) + player.Price;
+        }
+
         private void Search_BTN_Click(object sender, RoutedEventArgs e)
         {
             string search = SearchBar.Text;
@@ -307,20 +314,22 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
         private async void Player1_BTN_Click(object sender, RoutedEventArgs e)
         {
             double price = await GetPlayerPrice(Player1ID_TXTBLK.Text, Player1Position_TXTBLK.Text);
-            AddPlayer(new Player(Player1Name_TXTBLK.Text, (BitmapImage)Player1Image_IMG.Source, Player1Position_TXTBLK.Text, price));
+            Player player = new Player(Player1Name_TXTBLK.Text, (BitmapImage)Player1Image_IMG.Source, Player1Position_TXTBLK.Text, price);
+            AddPlayerAndStatsTotals(player);
         }
 
         private async void Player2_BTN_Click(object sender, RoutedEventArgs e)
         {
             double price = await GetPlayerPrice(Player2ID_TXTBLK.Text, Player2Position_TXTBLK.Text);
-            AddPlayer(new Player(Player2Name_TXTBLK.Text, (BitmapImage)Player2Image_IMG.Source, Player2Position_TXTBLK.Text, price));
+            Player player = new Player(Player2Name_TXTBLK.Text, (BitmapImage)Player2Image_IMG.Source, Player2Position_TXTBLK.Text, price);
+            AddPlayerAndStatsTotals(player);
         }
 
         private async void Player3_BTN_Click(object sender, RoutedEventArgs e)
         {
-            double price = await GetPlayerPrice(Player2ID_TXTBLK.Text, Player3Position_TXTBLK.Text);
-            AddPlayer(new Player(Player3Name_TXTBLK.Text, (BitmapImage)Player3Image_IMG.Source, Player3Position_TXTBLK.Text, price));
+            double price = await GetPlayerPrice(Player3ID_TXTBLK.Text, Player3Position_TXTBLK.Text);
+            Player player = new Player(Player3Name_TXTBLK.Text, (BitmapImage)Player3Image_IMG.Source, Player3Position_TXTBLK.Text, price);
+            AddPlayerAndStatsTotals(player);
         }
     }
-
 }

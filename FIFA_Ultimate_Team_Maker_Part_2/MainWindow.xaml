@@ -90,12 +90,19 @@
                         </Grid>
                     </Border>
                 </Grid>
-                <Grid Grid.Column="1" Background="green">
+                <Grid Grid.Column="1">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="#FF00CA0C" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="25*"/>
-                        <RowDefinition Height="25*"/>
-                        <RowDefinition Height="25*"/>
-                        <RowDefinition Height="25*"/>
+                        <RowDefinition Height="23.5*"/>
+                        <RowDefinition Height="23.5*"/>
+                        <RowDefinition Height="23.5*"/>
+                        <RowDefinition Height="23.5*"/>
+                        <RowDefinition Height="6*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="11*"/>
@@ -109,7 +116,7 @@
                         <ColumnDefinition Width="11*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock x:Name="ST1OVERLAY_TXTBLK" TextWrapping="Wrap" Text="ST" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="12,0,12,0" Grid.Column="2" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="ST1OVERLAY_REC" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <Rectangle x:Name="ST1OVERLAY_REC" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" Height="87" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="0" Grid.Column="2">
                         <StackPanel>
                             <TextBox x:Name="ST1_RATING" Text="99" TextAlignment="Right"/>
@@ -118,7 +125,7 @@
                         </StackPanel>
                     </Border>
                     <TextBlock x:Name="ST2OVERLAY_TXTBLK" TextWrapping="Wrap" Text="ST" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="12,0,12,0" Grid.Column="4" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="ST2OVERLAY_REC" Grid.Column="4" Grid.Row="0" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <Rectangle x:Name="ST2OVERLAY_REC" Grid.Column="4" Grid.Row="0" HorizontalAlignment="Center" Height="87" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="0" Grid.Column="4">
                         <StackPanel>
                             <TextBox x:Name="ST2_RATING" Text="99" TextAlignment="Right"/>
@@ -127,7 +134,7 @@
                         </StackPanel>
                     </Border>
                     <TextBlock x:Name="ST3OVERLAY_TXTBLK" TextWrapping="Wrap" Text="ST" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="12,0,12,0" Grid.Column="6" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="ST3OVERLAY_REC" Grid.Column="6" Grid.Row="0" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <Rectangle x:Name="ST3OVERLAY_REC" Grid.Column="6" Grid.Row="0" HorizontalAlignment="Center" Height="87" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="0" Grid.Column="6">
                         <StackPanel>
                             <TextBox x:Name="ST3_RATING" Text="99" TextAlignment="Right"/>
@@ -136,7 +143,7 @@
                         </StackPanel>
                     </Border>
                     <TextBlock x:Name="MF1OVERLAY_TXTBLK" TextWrapping="Wrap" Text="MF" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="5,0,5,0" Grid.Column="2" Grid.Row="1" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="MF1OVERLAY_REC" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <Rectangle x:Name="MF1OVERLAY_REC" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" Height="87" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="1" Grid.Column="2">
                         <StackPanel>
                             <TextBox x:Name="MF1_RATING" Text="99" TextAlignment="Right"/>
@@ -145,7 +152,7 @@
                         </StackPanel>
                     </Border>
                     <TextBlock x:Name="MF2OVERLAY_TXTBLK" TextWrapping="Wrap" Text="MF" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="5,0,5,0" Grid.Column="4" Grid.Row="1" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="MF2OVERLAY_REC" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <Rectangle x:Name="MF2OVERLAY_REC" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Center" Height="87" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="1" Grid.Column="4">
                         <StackPanel>
                             <TextBox x:Name="MF2_RATING" Text="99" TextAlignment="Right"/>
@@ -154,7 +161,7 @@
                         </StackPanel>
                     </Border>
                     <TextBlock x:Name="MF3OVERLAY_TXTBLK" TextWrapping="Wrap" Text="MF" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="5,0,5,0" Grid.Column="6" Grid.Row="1" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="MF3OVERLAY_REC" Grid.Column="6" Grid.Row="1" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <Rectangle x:Name="MF3OVERLAY_REC" Grid.Column="6" Grid.Row="1" HorizontalAlignment="Center" Height="87" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="1" Grid.Column="6">
                         <StackPanel>
                             <TextBox x:Name="MF3_RATING" Text="99" TextAlignment="Right"/>
@@ -163,7 +170,7 @@
                         </StackPanel>
                     </Border>
                     <TextBlock x:Name="DEF1OVERLAY_TXTBLK" TextWrapping="Wrap" Text="DEF" VerticalAlignment="Center" FontWeight="Bold" FontSize="29" Margin="5,0,5,0" Grid.Column="1" Grid.Row="2" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="DEF1OVERLAY_REC" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <Rectangle x:Name="DEF1OVERLAY_REC" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" Height="87" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="2" Grid.Column="1">
                         <StackPanel>
                             <TextBox x:Name="DEF1_RATING" Text="99" TextAlignment="Right"/>
@@ -172,7 +179,7 @@
                         </StackPanel>
                     </Border>
                     <TextBlock x:Name="DEF2OVERLAY_TXTBLK" TextWrapping="Wrap" Text="DEF" VerticalAlignment="Center" FontWeight="Bold" FontSize="29" Margin="5,0,5,0" Grid.Column="3" Grid.Row="2" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="DEF2OVERLAY_REC" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <Rectangle x:Name="DEF2OVERLAY_REC" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center" Height="87" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="2" Grid.Column="3">
                         <StackPanel>
                             <TextBox x:Name="DEF2_RATING" Text="99" TextAlignment="Right"/>
@@ -181,7 +188,7 @@
                         </StackPanel>
                     </Border>
                     <TextBlock x:Name="DEF3OVERLAY_TXTBLK" TextWrapping="Wrap" Text="DEF" VerticalAlignment="Center" FontWeight="Bold" FontSize="29" Margin="5,0,5,0" Grid.Column="5" Grid.Row="2" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="DEF3OVERLAY_REC" Grid.Column="5" Grid.Row="2" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <Rectangle x:Name="DEF3OVERLAY_REC" Grid.Column="5" Grid.Row="2" HorizontalAlignment="Center" Height="87" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="2" Grid.Column="5">
                         <StackPanel>
                             <TextBox x:Name="DEF3_RATING" Text="99" TextAlignment="Right"/>
@@ -190,7 +197,7 @@
                         </StackPanel>
                     </Border>
                     <TextBlock x:Name="DEF4OVERLAY_TXTBLK" TextWrapping="Wrap" Text="DEF" VerticalAlignment="Center" FontWeight="Bold" FontSize="29" Margin="5,0,5,0" Grid.Column="7" Grid.Row="2" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="DEF4OVERLAY_REC" Grid.Column="7" Grid.Row="2" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <Rectangle x:Name="DEF4OVERLAY_REC" Grid.Column="7" Grid.Row="2" HorizontalAlignment="Center" Height="87" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="2" Grid.Column="7">
                         <StackPanel>
                             <TextBox x:Name="DEF4_RATING" Text="99" TextAlignment="Right"/>
@@ -199,14 +206,21 @@
                         </StackPanel>
                     </Border>
                     <TextBlock x:Name="GK1OVERLAY_TXTBLK" TextWrapping="Wrap" Text="GK" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="5,0,5,0" Grid.Column="4" Grid.Row="3" Panel.ZIndex="2"/>
-                    <Rectangle x:Name="GK1OVERLAY_REC" Grid.Column="4" Grid.Row="3" HorizontalAlignment="Center" Height="97" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
-                    <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="5" Grid.Column="4">
+                    <Rectangle x:Name="GK1OVERLAY_REC" Grid.Column="4" Grid.Row="3" HorizontalAlignment="Center" Height="87" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
+                    <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="3" Grid.Column="4">
                         <StackPanel>
                             <TextBox x:Name="GK1_RATING" Text="99" TextAlignment="Right"/>
                             <Image x:Name="GK1_IMG" Width="61" Height="51"/>
                             <TextBox x:Name="GK1_NAME" Text="Player" TextAlignment="Left"/>
                         </StackPanel>
                     </Border>
+                    <Rectangle Height="24" Grid.Row="4" VerticalAlignment="Center" Grid.ColumnSpan="9" Grid.Column="0" Fill="Black"/>
+                    <TextBlock Text="Team Score (m) :" Foreground="White" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center" Width="89" Grid.ColumnSpan="2"/>
+                    <TextBlock Text="0" x:Name="TeamScore_TXTBLK" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Margin="38,0,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center" Width="66" Grid.ColumnSpan="2"/>
+                    <TextBlock Text="Team Value (m) :" Grid.Column="2" Foreground="White" HorizontalAlignment="Left" Margin="38,0,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center" Width="95" Grid.ColumnSpan="3"/>
+                    <TextBlock Text="0" x:Name="TeamValue_TXTBLK" Foreground="White" Grid.Column="3" HorizontalAlignment="Left" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center" Width="66" Grid.ColumnSpan="2" Margin="64,0,0,0"/>
+                    <Button Grid.Column="7" Content="Load" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="50"/>
+                    <Button Grid.Column="8" Content="Save" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="50"/>
                 </Grid>
             </Grid>
         </TabItem>
