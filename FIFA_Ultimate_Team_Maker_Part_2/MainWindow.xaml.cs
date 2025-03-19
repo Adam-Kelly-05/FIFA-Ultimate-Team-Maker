@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -202,6 +203,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                     Player1Name_TXTBLK.Text = player[0]["player"]["name"].ToString();
                     Player1Country_TXTBLK.Text = player[0]["player"]["nationality"].ToString();
                     Player1Age_TXTBLK.Text = player[0]["player"]["age"].ToString();
+                    Player1ID_TXTBLK.Text = player[0]["player"]["id"].ToString();
                     Player1Image_IMG.Source = new BitmapImage(new Uri(player[0]["player"]["photo"].ToString()));
                     Player1Position_TXTBLK.Text = player[0]["player"]["position"].ToString();
                     Player1_BTN.Opacity = 100;
@@ -213,6 +215,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                     Player2Name_TXTBLK.Text = player[1]["player"]["name"].ToString();
                     Player2Country_TXTBLK.Text = player[1]["player"]["nationality"].ToString();
                     Player2Age_TXTBLK.Text = player[1]["player"]["age"].ToString();
+                    Player2ID_TXTBLK.Text = player[1]["player"]["id"].ToString();
                     Player2Image_IMG.Source = new BitmapImage(new Uri(player[1]["player"]["photo"].ToString()));
                     Player2Position_TXTBLK.Text = player[1]["player"]["position"].ToString();
                     Player2_BTN.Opacity = 100;
@@ -224,6 +227,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                     Player3Name_TXTBLK.Text = player[2]["player"]["name"].ToString();
                     Player3Country_TXTBLK.Text = player[2]["player"]["nationality"].ToString();
                     Player3Age_TXTBLK.Text = player[2]["player"]["age"].ToString();
+                    Player3ID_TXTBLK.Text = player[2]["player"]["id"].ToString();
                     Player3Image_IMG.Source = new BitmapImage(new Uri(player[2]["player"]["photo"].ToString()));
                     Player3Position_TXTBLK.Text = player[2]["player"]["position"].ToString();
                     Player3_BTN.Opacity = 100;
@@ -292,17 +296,22 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
 
                 JToken player = responseJSON["response"];
 
-                string playersTeam = player["team"]["name"].ToString();
+                HashSet<string> fifaRecognizedCountries = new HashSet<string> { "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China PR", "Chinese Taipei", "Colombia", "Comoros", "Congo", "Cook Islands", "Costa Rica", "Croatia", "Cuba", "Curaçao", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "DR Congo", "Ecuador", "Egypt", "El Salvador", "England", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Faroe Islands", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Grenada", "Guam", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Israel", "Italy", "Ivory Coast", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Korea DPR", "Korea Republic", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Northern Ireland", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Ireland", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Scotland", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Tahiti", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United States", "Uruguay", "US Virgin Islands", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Wales", "Yemen", "Zambia", "Zimbabwe" };
 
-                return CalculatePlayerPrice(playersTeam, playersPosition);
+                foreach (JToken team in player)
+                {
+                    if (!fifaRecognizedCountries.Contains(team["team"]["name"].ToString()))
+                        return CalculatePlayerPrice(team["team"]["name"].ToString(), playersPosition);
+                }
+                return CalculatePlayerPrice(responseJSON["response"][0]["team"]["name"].ToString(), playersPosition);
             }
         }
 
         private void AddPlayerAndStatsTotals(Player player)
         {
             AddPlayer(player);
-            TeamScore_TXTBLK.Text += int.Parse(TeamScore_TXTBLK.Text) + player.Rating;
-            TeamValue_TXTBLK.Text += int.Parse(TeamValue_TXTBLK.Text) + player.Price;
+            TeamScore_TXTBLK.Text = (double.Parse(TeamScore_TXTBLK.Text) + player.Rating).ToString();
+            TeamValue_TXTBLK.Text = (double.Parse(TeamValue_TXTBLK.Text) + player.Price).ToString();
         }
 
         private void Search_BTN_Click(object sender, RoutedEventArgs e)
