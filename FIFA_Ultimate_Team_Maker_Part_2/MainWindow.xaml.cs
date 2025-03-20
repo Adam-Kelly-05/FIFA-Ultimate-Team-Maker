@@ -21,13 +21,14 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
         int defenderCounter = 0;
         int goalkeeperCounter = 0;
 
-        double budget;
+        double budget = 999999999999;
 
         CreatedTeam createdTeam = new CreatedTeam();
 
         public MainWindow()
         {
             InitializeComponent();
+            RemainingBudget_TXTBLK.Text = "∞";
         }
 
         private void ClearOldResults() // Not Implamented Yet
@@ -175,6 +176,10 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                     goalkeeperCounter++;
                     createdTeam.AddPlayer(player);
                 }
+                else
+                {
+                    MessageBox.Show("That position is full");
+                }
             }
         }
 
@@ -259,7 +264,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
             int positionValue = 1;
             switch (playersPosition)
             {
-                case "Forward":
+                case "Attacker":
                     positionValue = 20;
                     break;
                 case "Midfielder":
@@ -275,7 +280,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                     break;
             }
 
-            return 0.1 * teamPositionValue * leagueValue * positionValue;
+            return (0.1 * teamPositionValue * leagueValue * positionValue) / 8;
         }
 
         private async Task<double> GetPlayerPrice(string playersID, string playersPosition)
@@ -323,17 +328,8 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
         private void StartGame_BTN_Click(object sender, RoutedEventArgs e)
         {
             double enteredBudget = double.Parse(Budget_TXTBX.Text);
-            if (enteredBudget == 0)
-            {
-                budget = 99999999999999;
-                RemainingBudget_TXTBLK.Text = "∞";
-            }
-            else
-            {
-                budget = enteredBudget;
-                RemainingBudget_TXTBLK.Text = budget.ToString();
-            }
-
+            if (enteredBudget != 0)
+                RemainingBudget_TXTBLK.Text = enteredBudget.ToString();
         }
 
         private void Search_BTN_Click(object sender, RoutedEventArgs e)
