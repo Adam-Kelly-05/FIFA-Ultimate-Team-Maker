@@ -8,16 +8,15 @@
         Title="MainWindow" Height="450" Width="800">
     <TabControl>
         <TabItem Name="StartupScreen" Header="Startup Screen" Width="50">
-            <Grid ShowGridLines="True">
-                <TextBox x:Name="Test" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="145" Height="386" Margin="639,0,0,0"/>
-                <TextBlock HorizontalAlignment="Center" Margin="0,111,0,0" TextWrapping="Wrap" Text="FIFA Ultimate Team Maker" VerticalAlignment="Top" FontWeight="Bold" FontSize="34"/>
-                <TextBlock HorizontalAlignment="Center" Margin="0,164,0,0" TextWrapping="Wrap" Text="Enter Your Budget In Millions (0 is unlimited)" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-                <TextBox x:Name="Budget_TXTBX" HorizontalAlignment="Center" Margin="0,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" FontSize="18"/>
-                <Button x:Name="StartGame_BTN" Content="Start Game" HorizontalAlignment="Center" Margin="0,224,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="122" FontSize="18" Click="StartGame_BTN_Click"/>
+            <Grid ShowGridLines="True" Background="Black">
+                <TextBlock HorizontalAlignment="Center" Margin="0,111,0,0" TextWrapping="Wrap" Text="FIFA Ultimate Team Maker" VerticalAlignment="Top" FontWeight="Bold" FontSize="34" Foreground="White"/>
+                <TextBlock HorizontalAlignment="Center" Margin="0,164,0,0" TextWrapping="Wrap" Text="Enter Your Budget In Millions (0 is unlimited)" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="White"/>
+                <TextBox x:Name="Budget_TXTBX" HorizontalAlignment="Center" Margin="0,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" FontSize="18" BorderBrush="White" Background="Black" Foreground="White" SelectionBrush="{x:Null}"/>
+                <Button x:Name="StartGame_BTN" Content="Start Game" HorizontalAlignment="Center" Margin="0,224,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="122" FontSize="18" Click="StartGame_BTN_Click" BorderBrush="White" Foreground="White" Background="Black"/>
             </Grid>
         </TabItem>
         <TabItem Name="MainScreen" Header="Main Screen">
-            <Grid>
+            <Grid Background="Black">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="3*"/>
@@ -29,63 +28,63 @@
                         <RowDefinition Height="27.5*"/>
                         <RowDefinition Height="27.5*"/>
                     </Grid.RowDefinitions>
-                    <Label Content="Search for any player" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,15,0,0"/>
-                    <TextBox x:Name="SearchBar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Margin="10,42,0,0"/>
-                    <Button x:Name="Search_BTN" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="42" Click="Search_BTN_Click" Margin="146,42,0,0" Height="19"/>
-                    <Border x:Name="Player1Border_BDR" BorderBrush="White" BorderThickness="2" Grid.Row="1" Margin="5" >
+                    <Label Content="Search for any player" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,15,0,0" Foreground="White"/>
+                    <TextBox x:Name="SearchBar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Margin="10,42,0,0" Background="Black" BorderBrush="White" Foreground="White" SelectionBrush="{x:Null}"/>
+                    <Button x:Name="Search_BTN" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="42" Click="Search_BTN_Click" Margin="146,42,0,0" Height="19" Background="Black" BorderBrush="White" Foreground="White"/>
+                    <Border x:Name="Player1Border_BDR" BorderBrush="Black" BorderThickness="2" Grid.Row="1" Margin="5" >
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="65*"/>
                                 <ColumnDefinition Width="35*"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Margin="2">
-                                <TextBlock x:Name="Player1Name_TXTBLK"/>
-                                <TextBlock x:Name="Player1Country_TXTBLK"/>
-                                <TextBlock x:Name="Player1Age_TXTBLK"/>
-                                <TextBlock x:Name="Player1ID_TXTBLK"/>
+                                <TextBlock Foreground="White" x:Name="Player1Name_TXTBLK"/>
+                                <TextBlock Foreground="White" x:Name="Player1Country_TXTBLK"/>
+                                <TextBlock Foreground="White" x:Name="Player1Age_TXTBLK"/>
+                                <TextBlock Foreground="Black" x:Name="Player1ID_TXTBLK"/>
                             </StackPanel>
                             <Button x:Name="Player1_BTN" Content="Add Player" Margin="4,67,3,2" Opacity="0" Click="Player1_BTN_Click"/>
                             <Grid Grid.Column="1">
                                 <Image x:Name="Player1Image_IMG" Margin="0,0,0,18"/>
-                                <TextBlock x:Name="Player1Position_TXTBLK" Margin="0,77,1,-76"/>
+                                <TextBlock Foreground="White" x:Name="Player1Position_TXTBLK" Margin="0,77,1,-76"/>
                             </Grid>
                         </Grid>
                     </Border>
-                    <Border x:Name="Player2Border_BDR" BorderBrush="White" BorderThickness="2" Grid.Row="2" Margin="5" >
+                    <Border x:Name="Player2Border_BDR" BorderBrush="Black" BorderThickness="2" Grid.Row="2" Margin="5" >
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="65*"/>
                                 <ColumnDefinition Width="35*"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Margin="2">
-                                <TextBlock x:Name="Player2Name_TXTBLK"/>
-                                <TextBlock x:Name="Player2Country_TXTBLK"/>
-                                <TextBlock x:Name="Player2Age_TXTBLK"/>
-                                <TextBlock x:Name="Player2ID_TXTBLK"/>
+                                <TextBlock Foreground="White" x:Name="Player2Name_TXTBLK"/>
+                                <TextBlock Foreground="White" x:Name="Player2Country_TXTBLK"/>
+                                <TextBlock Foreground="White" x:Name="Player2Age_TXTBLK"/>
+                                <TextBlock Foreground="Black" x:Name="Player2ID_TXTBLK"/>
                             </StackPanel>
                             <Button x:Name="Player2_BTN" Content="Add Player" Margin="4,67,3,2" Opacity="0" Click="Player2_BTN_Click"/>
                             <Grid Grid.Column="1">
                                 <Image x:Name="Player2Image_IMG" Margin="0,0,0,18"/>
-                                <TextBlock x:Name="Player2Position_TXTBLK" Margin="0,77,1,-76"/>
+                                <TextBlock Foreground="White" x:Name="Player2Position_TXTBLK" Margin="0,77,1,-76"/>
                             </Grid>
                         </Grid>
                     </Border>
-                    <Border x:Name="Player3Border_BDR" BorderBrush="White" BorderThickness="2" Grid.Row="3" Margin="5" >
+                    <Border x:Name="Player3Border_BDR" BorderBrush="Black" BorderThickness="2" Grid.Row="3" Margin="5" >
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="65*"/>
                                 <ColumnDefinition Width="35*"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Margin="2">
-                                <TextBlock x:Name="Player3Name_TXTBLK"/>
-                                <TextBlock x:Name="Player3Country_TXTBLK"/>
-                                <TextBlock x:Name="Player3Age_TXTBLK"/>
-                                <TextBlock x:Name="Player3ID_TXTBLK"/>
+                                <TextBlock Foreground="White" x:Name="Player3Name_TXTBLK"/>
+                                <TextBlock Foreground="White" x:Name="Player3Country_TXTBLK"/>
+                                <TextBlock Foreground="White" x:Name="Player3Age_TXTBLK"/>
+                                <TextBlock Foreground="Black" x:Name="Player3ID_TXTBLK"/>
                             </StackPanel>
                             <Button x:Name="Player3_BTN" Content="Add Player" Margin="4,67,3,2" Opacity="0" Click="Player3_BTN_Click"/>
                             <Grid Grid.Column="1">
                                 <Image x:Name="Player3Image_IMG" Margin="0,0,0,18"/>
-                                <TextBlock x:Name="Player3Position_TXTBLK" Margin="0,77,1,-76"/>
+                                <TextBlock Foreground="White" x:Name="Player3Position_TXTBLK" Margin="0,77,1,-76"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -115,7 +114,7 @@
                         <ColumnDefinition Width="11*"/>
                         <ColumnDefinition Width="11*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock x:Name="ST1OVERLAY_TXTBLK" TextWrapping="Wrap" Text="ST" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="12,0,12,0" Grid.Column="2" Panel.ZIndex="2"/>
+                    <TextBlock x:Name="ST1OVERLAY_TXTBLK" TextWrapping="Wrap" Text="ST" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="12,0,12,0" Grid.Column="2" Panel.ZIndex="2" HorizontalAlignment="Center"/>
                     <Rectangle x:Name="ST1OVERLAY_REC" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" Height="87" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="0" Grid.Column="2">
                         <StackPanel>
@@ -124,7 +123,7 @@
                             <TextBox x:Name="ST1_NAME" Text="Player" TextAlignment="Left"/>
                         </StackPanel>
                     </Border>
-                    <TextBlock x:Name="ST2OVERLAY_TXTBLK" TextWrapping="Wrap" Text="ST" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="12,0,12,0" Grid.Column="4" Panel.ZIndex="2"/>
+                    <TextBlock x:Name="ST2OVERLAY_TXTBLK" TextWrapping="Wrap" Text="ST" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="12,0,12,0" Grid.Column="4" Panel.ZIndex="2" HorizontalAlignment="Center"/>
                     <Rectangle x:Name="ST2OVERLAY_REC" Grid.Column="4" Grid.Row="0" HorizontalAlignment="Center" Height="87" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="0" Grid.Column="4">
                         <StackPanel>
@@ -133,7 +132,7 @@
                             <TextBox x:Name="ST2_NAME" Text="Player" TextAlignment="Left"/>
                         </StackPanel>
                     </Border>
-                    <TextBlock x:Name="ST3OVERLAY_TXTBLK" TextWrapping="Wrap" Text="ST" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="12,0,12,0" Grid.Column="6" Panel.ZIndex="2"/>
+                    <TextBlock x:Name="ST3OVERLAY_TXTBLK" TextWrapping="Wrap" Text="ST" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="12,0,12,0" Grid.Column="6" Panel.ZIndex="2" HorizontalAlignment="Center"/>
                     <Rectangle x:Name="ST3OVERLAY_REC" Grid.Column="6" Grid.Row="0" HorizontalAlignment="Center" Height="87" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="0" Grid.Column="6">
                         <StackPanel>
@@ -178,7 +177,7 @@
                             <TextBox x:Name="DEF1_NAME" Text="Player" TextAlignment="Left"/>
                         </StackPanel>
                     </Border>
-                    <TextBlock x:Name="DEF2OVERLAY_TXTBLK" TextWrapping="Wrap" Text="DEF" VerticalAlignment="Center" FontWeight="Bold" FontSize="29" Margin="5,0,5,0" Grid.Column="3" Grid.Row="2" Panel.ZIndex="2"/>
+                    <TextBlock x:Name="DEF2OVERLAY_TXTBLK" TextWrapping="Wrap" Text="DEF" VerticalAlignment="Center" FontWeight="Bold" FontSize="29" Margin="5,0,5,0" Grid.Column="3" Grid.Row="2" Panel.ZIndex="2" HorizontalAlignment="Center"/>
                     <Rectangle x:Name="DEF2OVERLAY_REC" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center" Height="87" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="2" Grid.Column="3">
                         <StackPanel>
@@ -205,7 +204,7 @@
                             <TextBox x:Name="DEF4_NAME" Text="Player" TextAlignment="Left"/>
                         </StackPanel>
                     </Border>
-                    <TextBlock x:Name="GK1OVERLAY_TXTBLK" TextWrapping="Wrap" Text="GK" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="5,0,5,0" Grid.Column="4" Grid.Row="3" Panel.ZIndex="2"/>
+                    <TextBlock x:Name="GK1OVERLAY_TXTBLK" TextWrapping="Wrap" Text="GK" VerticalAlignment="Center" FontWeight="Bold" FontSize="34" Margin="5,0,5,0" Grid.Column="4" Grid.Row="3" Panel.ZIndex="2" HorizontalAlignment="Center"/>
                     <Rectangle x:Name="GK1OVERLAY_REC" Grid.Column="4" Grid.Row="3" HorizontalAlignment="Center" Height="87" Stroke="Black" VerticalAlignment="Center" Width="61" Fill="White" Panel.ZIndex="1"/>
                     <Border BorderBrush="black" BorderThickness="2" Margin="2" Grid.Row="3" Grid.Column="4">
                         <StackPanel>
@@ -221,8 +220,8 @@
                     <TextBlock Text="0" x:Name="TeamValue_TXTBLK" Foreground="White" Grid.Column="3" HorizontalAlignment="Left" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center" Width="54" Grid.ColumnSpan="2" Margin="56,0,0,0"/>
                     <TextBlock Text="Budget (m):" Grid.Column="5" Foreground="White" HorizontalAlignment="Left" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center" Width="95" Grid.ColumnSpan="2"/>
                     <TextBlock Text="0" x:Name="RemainingBudget_TXTBLK" Foreground="White" Grid.Column="6" HorizontalAlignment="Left" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center" Width="55" Margin="3,0,0,0"/>
-                    <Button Grid.Column="7" Content="Load" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="50"/>
-                    <Button Grid.Column="8" Content="Save" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="50"/>
+                    <Button Grid.Column="7" Content="Load" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="50" Background="Black" BorderBrush="White" Foreground="White"/>
+                    <Button Grid.Column="8" Content="Save" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="50" Background="Black" BorderBrush="White" Foreground="White"/>
                 </Grid>
             </Grid>
         </TabItem>

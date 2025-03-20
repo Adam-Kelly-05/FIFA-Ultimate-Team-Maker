@@ -21,8 +21,6 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
         int defenderCounter = 0;
         int goalkeeperCounter = 0;
 
-        double budget = 999999999999;
-
         CreatedTeam createdTeam = new CreatedTeam();
 
         public MainWindow()
@@ -177,9 +175,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                     createdTeam.AddPlayer(player);
                 }
                 else
-                {
                     MessageBox.Show("That position is full");
-                }
             }
         }
 
@@ -195,13 +191,12 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                 string responseString = await response.Content.ReadAsStringAsync();
 
                 JObject responseJSON = JObject.Parse(responseString);
-                Test.Text = responseJSON.ToString();
 
                 JToken player = responseJSON["response"];
 
                 if (player[0] != null)
                 {
-                    Player1Border_BDR.BorderBrush = Brushes.Black;
+                    Player1Border_BDR.BorderBrush = Brushes.White;
                     Player1Name_TXTBLK.Text = player[0]["player"]["name"].ToString();
                     Player1Country_TXTBLK.Text = player[0]["player"]["nationality"].ToString();
                     Player1Age_TXTBLK.Text = player[0]["player"]["age"].ToString();
@@ -213,7 +208,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
 
                 if (player[1] != null)
                 {
-                    Player2Border_BDR.BorderBrush = Brushes.Black;
+                    Player2Border_BDR.BorderBrush = Brushes.White;
                     Player2Name_TXTBLK.Text = player[1]["player"]["name"].ToString();
                     Player2Country_TXTBLK.Text = player[1]["player"]["nationality"].ToString();
                     Player2Age_TXTBLK.Text = player[1]["player"]["age"].ToString();
@@ -225,7 +220,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
 
                 if (player[2] != null)
                 {
-                    Player3Border_BDR.BorderBrush = Brushes.Black;
+                    Player3Border_BDR.BorderBrush = Brushes.White;
                     Player3Name_TXTBLK.Text = player[2]["player"]["name"].ToString();
                     Player3Country_TXTBLK.Text = player[2]["player"]["nationality"].ToString();
                     Player3Age_TXTBLK.Text = player[2]["player"]["age"].ToString();
@@ -236,9 +231,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                 }
 
                 if (player[0] == null && player[1] == null && player[2] == null)
-                {
                     Player1Name_TXTBLK.Text = "No Results";
-                }
             }
         }
 
@@ -320,9 +313,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                     RemainingBudget_TXTBLK.Text = (double.Parse(RemainingBudget_TXTBLK.Text) - player.Price).ToString();
             }
             else
-            {
                 MessageBox.Show("You can not afford this player!");
-            }
         }
 
         private void StartGame_BTN_Click(object sender, RoutedEventArgs e)
@@ -335,7 +326,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
         private void Search_BTN_Click(object sender, RoutedEventArgs e)
         {
             string search = SearchBar.Text;
-            GetTopThreePlayers(search);
+            _ = GetTopThreePlayers(search);
         }
 
         private async void Player1_BTN_Click(object sender, RoutedEventArgs e)

@@ -9,10 +9,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
         public BitmapImage Photo { get; set; }
         public string Position { get; set; }
         public double Price { get; set; }
-
-        private double rating;
         public double Rating => Math.Floor((0.6 * Price) + 40);
-
 
         public Player(string name, BitmapImage photo, string position, double price)
         {
