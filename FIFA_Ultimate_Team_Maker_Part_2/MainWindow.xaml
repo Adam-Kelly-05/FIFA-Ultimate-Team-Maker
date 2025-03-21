@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         WindowStartupLocation="CenterScreen">
-        <Grid ShowGridLines="True" Background="Black">
-            <TextBlock HorizontalAlignment="Center" Margin="0,111,0,0" TextWrapping="Wrap" Text="FIFA Ultimate Team Maker" VerticalAlignment="Top" FontWeight="Bold" FontSize="34" Foreground="White"/>
-            <TextBlock HorizontalAlignment="Center" Margin="0,164,0,0" TextWrapping="Wrap" Text="Enter Your Budget In Millions (0 is unlimited)" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="White"/>
-            <TextBox Text="0" x:Name="Budget_TXTBX" HorizontalAlignment="Center" Margin="0,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" FontSize="18" BorderBrush="White" Background="Black" Foreground="White" SelectionBrush="{x:Null}"/>
-            <Button x:Name="StartGame_BTN" Content="Start Game" HorizontalAlignment="Center" Margin="0,224,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="122" FontSize="18" Click="StartGame_BTN_Click" BorderBrush="White" Foreground="White" Background="Black"/>
-        </Grid>
+    <Grid ShowGridLines="True" Background="Black">
+        <TextBlock HorizontalAlignment="Center" Margin="0,127,0,0" TextWrapping="Wrap" Text="FIFA Ultimate Team Maker" VerticalAlignment="Top" FontWeight="Bold" FontSize="34" Foreground="White" Height="49"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,181,0,0" TextWrapping="Wrap" Text="Enter Your Budget In Millions (0 is unlimited)" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="White" Height="26"/>
+        <TextBox Text="0" x:Name="Budget_TXTBX" HorizontalAlignment="Center" Margin="0,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" FontSize="18" BorderBrush="White" Background="Black" Foreground="White" SelectionBrush="{x:Null}" Height="28"/>
+        <Button x:Name="StartGame_BTN" Content="Start Game" HorizontalAlignment="Center" Margin="0,246,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="122" FontSize="18" Click="StartGame_BTN_Click" BorderBrush="White" Foreground="White" Background="Black" Height="30"/>
+    </Grid>
 </Window>
