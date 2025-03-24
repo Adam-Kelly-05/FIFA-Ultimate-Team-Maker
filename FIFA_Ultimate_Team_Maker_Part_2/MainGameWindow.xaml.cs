@@ -25,6 +25,8 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
         int defenderCounter = 0;
         int goalkeeperCounter = 0;
 
+        bool loaded = false;
+
         public MainGameWindow(MainWindow owner)
         {
             InitializeComponent();
@@ -37,37 +39,37 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                 RemainingBudget_TXTBLK.Text = mainWindow.budget.ToString();
         }
 
-        private void ClearOldResults() // Not Implamented Yet
-        {
-            Player1Name_TXTBLK.Text = string.Empty;
-            Player1Country_TXTBLK.Text = string.Empty;
-            Player1Age_TXTBLK.Text = string.Empty;
-            Player1ID_TXTBLK.Text = string.Empty;
-            Player1_BTN.Opacity = 0;
-            Player1Image_IMG.Source = null;
-            Player1Position_TXTBLK.Text = string.Empty;
-            Player1Border_BDR.Opacity = 0;
+        //private void ClearOldResults()
+        //{
+        //    Player1Name_TXTBLK.Text = string.Empty;
+        //    Player1Country_TXTBLK.Text = string.Empty;
+        //    Player1Age_TXTBLK.Text = string.Empty;
+        //    Player1ID_TXTBLK.Text = string.Empty;
+        //    Player1_BTN.Opacity = 0;
+        //    Player1Image_IMG.Source = null;
+        //    Player1Position_TXTBLK.Text = string.Empty;
+        //    Player1Border_BDR.Opacity = 0;
 
-            Player2Name_TXTBLK.Text = string.Empty;
-            Player2Country_TXTBLK.Text = string.Empty;
-            Player2Age_TXTBLK.Text = string.Empty;
-            Player2ID_TXTBLK.Text = string.Empty;
-            Player2_BTN.Opacity = 0;
-            Player2Image_IMG.Source = null;
-            Player2Position_TXTBLK.Text = string.Empty;
-            Player2Border_BDR.Opacity = 0;
+        //    Player2Name_TXTBLK.Text = string.Empty;
+        //    Player2Country_TXTBLK.Text = string.Empty;
+        //    Player2Age_TXTBLK.Text = string.Empty;
+        //    Player2ID_TXTBLK.Text = string.Empty;
+        //    Player2_BTN.Opacity = 0;
+        //    Player2Image_IMG.Source = null;
+        //    Player2Position_TXTBLK.Text = string.Empty;
+        //    Player2Border_BDR.Opacity = 0;
 
-            Player3Name_TXTBLK.Text = string.Empty;
-            Player3Country_TXTBLK.Text = string.Empty;
-            Player3Age_TXTBLK.Text = string.Empty;
-            Player3ID_TXTBLK.Text = string.Empty;
-            Player3_BTN.Opacity = 0;
-            Player3Image_IMG.Source = null;
-            Player3Position_TXTBLK.Text = string.Empty;
-            Player3Border_BDR.Opacity = 0;
-        }
+        //    Player3Name_TXTBLK.Text = string.Empty;
+        //    Player3Country_TXTBLK.Text = string.Empty;
+        //    Player3Age_TXTBLK.Text = string.Empty;
+        //    Player3ID_TXTBLK.Text = string.Empty;
+        //    Player3_BTN.Opacity = 0;
+        //    Player3Image_IMG.Source = null;
+        //    Player3Position_TXTBLK.Text = string.Empty;
+        //    Player3Border_BDR.Opacity = 0;
+        //}
 
-        private void AddPLayerToGUI(Player player)
+        private void AddPLayerToGUI(Player player, bool manual)
         {
             if (player.Position == "Attacker" || player.Position == "Midfielder" || player.Position == "Defender" || player.Position == "Goalkeeper")
             {
@@ -100,8 +102,11 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                         ST3OVERLAY_TXTBLK.Opacity = 0;
                         Panel.SetZIndex(ST3OVERLAY_REC, -1);
                     }
-                    attackerCounter++;
-                    createdTeam.AddPlayer(player);
+                    if (manual)
+                    {
+                        attackerCounter++;
+                        createdTeam.AddPlayer(player);
+                    }
                 }
                 else if (player.Position == "Midfielder" && midfielderCounter <= 2)
                 {
@@ -129,8 +134,11 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                         MF3OVERLAY_TXTBLK.Opacity = 0;
                         Panel.SetZIndex(MF3OVERLAY_REC, -1);
                     }
-                    midfielderCounter++;
-                    createdTeam.AddPlayer(player);
+                    if (manual)
+                    {
+                        midfielderCounter++;
+                        createdTeam.AddPlayer(player);
+                    }
                 }
                 else if (player.Position == "Defender" && midfielderCounter <= 3)
                 {
@@ -166,8 +174,11 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                         DEF4OVERLAY_TXTBLK.Opacity = 0;
                         Panel.SetZIndex(DEF4OVERLAY_REC, -1);
                     }
-                    defenderCounter++;
-                    createdTeam.AddPlayer(player);
+                    if (manual)
+                    {
+                        defenderCounter++;
+                        createdTeam.AddPlayer(player);
+                    }
                 }
                 else if (player.Position == "Goalkeeper" && goalkeeperCounter <= 0)
                 {
@@ -179,11 +190,17 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                         GK1OVERLAY_TXTBLK.Opacity = 0;
                         Panel.SetZIndex(GK1OVERLAY_REC, -1);
                     }
-                    goalkeeperCounter++;
-                    createdTeam.AddPlayer(player);
+                    if (manual)
+                    {
+                        goalkeeperCounter++;
+                        createdTeam.AddPlayer(player);
+                    }
                 }
                 else
-                    MessageBox.Show("That position is full");
+                {
+                    if (manual)
+                        MessageBox.Show("That position is full!");
+                }
             }
         }
 
@@ -239,11 +256,11 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                 }
 
                 if (player[0] == null && player[1] == null && player[2] == null)
-                    Player1Name_TXTBLK.Text = "No Results";
+                    MessageBox.Show("No Results!");
             }
         }
 
-        private double CalculatePlayerPrice(string playersTeam, string playersPosition)
+        private double CalculatePlayerPrice(string playersTeam)
         {
             LeagueData db = new LeagueData();
 
@@ -262,29 +279,10 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                                 .Select(l => l.LeagueValue)
                                 .FirstOrDefault();
 
-            int positionValue = 1;
-            switch (playersPosition)
-            {
-                case "Attacker":
-                    positionValue = 20;
-                    break;
-                case "Midfielder":
-                    positionValue = 14;
-                    break;
-                case "Defender":
-                    positionValue = 7;
-                    break;
-                case "Goalkeeper":
-                    positionValue = 1;
-                    break;
-                default:
-                    break;
-            }
-
-            return (0.1 * teamPositionValue * leagueValue * positionValue) / 8;
+            return .25 * teamPositionValue * leagueValue;
         }
 
-        private async Task<double> GetPlayerPrice(string playersID, string playersPosition)
+        private async Task<double> GetPlayerPrice(string playersID)
         {
             string apiKey = "496d47c537f35ec7b40b14859f19a74e";
             string apiUrl = $"https://v3.football.api-sports.io/players/teams?player={playersID}";
@@ -304,9 +302,9 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                 foreach (JToken team in player)
                 {
                     if (!fifaRecognizedCountries.Contains(team["team"]["name"].ToString()))
-                        return CalculatePlayerPrice(team["team"]["name"].ToString(), playersPosition);
+                        return CalculatePlayerPrice(team["team"]["name"].ToString());
                 }
-                return CalculatePlayerPrice(responseJSON["response"][0]["team"]["name"].ToString(), playersPosition);
+                return CalculatePlayerPrice(responseJSON["response"][0]["team"]["name"].ToString());
             }
         }
 
@@ -314,7 +312,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
         {
             if (double.Parse(RemainingBudget_TXTBLK.Text) > player.Price)
             {
-                AddPLayerToGUI(player);
+                AddPLayerToGUI(player, true);
                 TeamScore_TXTBLK.Text = createdTeam.GetTeamScore().ToString();
                 TeamValue_TXTBLK.Text = createdTeam.GetTeamPrice().ToString();
                 if (RemainingBudget_TXTBLK.Text != "∞")
@@ -332,32 +330,38 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
 
         private async void Player1_BTN_Click(object sender, RoutedEventArgs e)
         {
-            double price = await GetPlayerPrice(Player1ID_TXTBLK.Text, Player1Position_TXTBLK.Text);
+            double price = await GetPlayerPrice(Player1ID_TXTBLK.Text);
             Player player = new Player(Player1Name_TXTBLK.Text, (BitmapImage)Player1Image_IMG.Source, Player1Position_TXTBLK.Text, price);
             AddPlayersStatsAndTotals(player);
         }
 
         private async void Player2_BTN_Click(object sender, RoutedEventArgs e)
         {
-            double price = await GetPlayerPrice(Player2ID_TXTBLK.Text, Player2Position_TXTBLK.Text);
+            double price = await GetPlayerPrice(Player2ID_TXTBLK.Text);
             Player player = new Player(Player2Name_TXTBLK.Text, (BitmapImage)Player2Image_IMG.Source, Player2Position_TXTBLK.Text, price);
             AddPlayersStatsAndTotals(player);
         }
 
         private async void Player3_BTN_Click(object sender, RoutedEventArgs e)
         {
-            double price = await GetPlayerPrice(Player3ID_TXTBLK.Text, Player3Position_TXTBLK.Text);
+            double price = await GetPlayerPrice(Player3ID_TXTBLK.Text);
             Player player = new Player(Player3Name_TXTBLK.Text, (BitmapImage)Player3Image_IMG.Source, Player3Position_TXTBLK.Text, price);
             AddPlayersStatsAndTotals(player);
         }
 
         private void Load_BTN_Click(object sender, RoutedEventArgs e)
         {
-            List<Player> players = createdTeam.LoadGame();
-            foreach (Player player in players)
+            if (loaded || attackerCounter + midfielderCounter + defenderCounter + goalkeeperCounter != 0)
+                MessageBox.Show("Please clear this save before loading!");
+            else
             {
-                AddPLayerToGUI(player);
-                AddPlayersStatsAndTotals(player);
+                List<Player> players = createdTeam.LoadGame();
+                foreach (Player player in players)
+                {
+                    AddPLayerToGUI(player, false);
+                    AddPlayersStatsAndTotals(player);
+                }
+                loaded = true;
             }
         }
 

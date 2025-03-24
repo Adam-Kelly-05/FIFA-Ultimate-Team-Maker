@@ -66,7 +66,8 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
 
         public void SaveGame()
         {
-            string path = @"C:\..\..\..\FIFA_Ultimate_Team_Maker_Part_2\Save.csv";
+            string path = "..//..//Save.csv";
+            File.Delete(path);
 
             using (StreamWriter sw = File.CreateText(path))
             {
@@ -77,7 +78,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
 
         public List<Player> LoadGame()
         {
-            string path = @"C:\..\..\..\FIFA_Ultimate_Team_Maker_Part_2\Save.csv";
+            string path = "..//..//Save.csv";
             List<Player> players = new List<Player>();
 
             string line;
