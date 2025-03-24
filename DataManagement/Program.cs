@@ -44,7 +44,7 @@ namespace DataManagement
                 Team team5 = new Team() { TeamId = 5, TeamName = "Tottenham Hotspur", Ranking = 5, Value = 16, League = league1, LeagueID = 1 };
                 Team team6 = new Team() { TeamId = 6, TeamName = "Chelsea", Ranking = 6, Value = 15, League = league1, LeagueID = 1 };
                 Team team7 = new Team() { TeamId = 7, TeamName = "Newcastle United", Ranking = 7, Value = 14, League = league1, LeagueID = 1 };
-                Team team8 = new Team() { TeamId = 8, TeamName = "Manchester City", Ranking = 8, Value = 13, League = league1, LeagueID = 1 };
+                Team team8 = new Team() { TeamId = 8, TeamName = "Manchester United", Ranking = 8, Value = 13, League = league1, LeagueID = 1 };
                 Team team9 = new Team() { TeamId = 9, TeamName = "West Ham United", Ranking = 9, Value = 12, League = league1, LeagueID = 1 };
                 Team team10 = new Team() { TeamId = 10, TeamName = "Crystal Palace", Ranking = 10, Value = 11, League = league1, LeagueID = 1 };
                 Team team11 = new Team() { TeamId = 11, TeamName = "Brighton & Hove Albion", Ranking = 11, Value = 10, League = league1, LeagueID = 1 };

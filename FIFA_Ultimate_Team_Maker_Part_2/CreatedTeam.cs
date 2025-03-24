@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Windows.Media.Imaging;
 namespace FIFA_Ultimate_Team_Maker_Part_2
 {
     class CreatedTeam
@@ -49,9 +52,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
         {
             double totalTeamValue = 0;
             foreach (Player person in AllPlayers)
-            {
                 totalTeamValue += person.Price;
-            }
             return totalTeamValue;
         }
 
@@ -59,14 +60,46 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
         {
             double totalScoreValue = 0;
             foreach (Player person in AllPlayers)
-            {
                 totalScoreValue += person.Rating;
-            }
             return totalScoreValue;
         }
 
-        // for printing to json:
-        // for player in Attacker... for player in Midfielders...
-        // Add rating, name, photo to json
+        public void SaveGame()
+        {
+            string path = @"C:\..\..\..\FIFA_Ultimate_Team_Maker_Part_2\Save.csv";
+
+            using (StreamWriter sw = File.CreateText(path))
+            {
+                foreach (Player player in AllPlayers)
+                {
+                    sw.WriteLine($"{player.Name},{player.Photo},{player.Position},{player.Price}");
+                }
+            }
+        }
+
+        public List<Player> LoadGame()
+        {
+            string path = @"C:\..\..\..\FIFA_Ultimate_Team_Maker_Part_2\Save.csv";
+            List<Player> players = new List<Player>();
+
+            string line;
+            using (StreamReader sr = new StreamReader(path))
+            {
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] splittedLine = line.Split(',');
+
+                    string name = splittedLine[0];
+                    BitmapImage photo = new BitmapImage(new Uri(splittedLine[1]));
+                    string position = splittedLine[2];
+                    double Price = double.Parse(splittedLine[3]);
+
+                    Player player = new Player(name, photo, position, Price);
+                    AddPlayer(player);
+                    players.Add(player);
+                }
+            }
+            return players;
+        }
     }
 }

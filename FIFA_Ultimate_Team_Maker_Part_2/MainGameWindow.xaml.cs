@@ -67,7 +67,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
             Player3Border_BDR.Opacity = 0;
         }
 
-        private void AddPlayer(Player player)
+        private void AddPLayerToGUI(Player player)
         {
             if (player.Position == "Attacker" || player.Position == "Midfielder" || player.Position == "Defender" || player.Position == "Goalkeeper")
             {
@@ -310,13 +310,13 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
             }
         }
 
-        private void AddPlayerAndStatsTotals(Player player)
+        private void AddPlayersStatsAndTotals(Player player)
         {
             if (double.Parse(RemainingBudget_TXTBLK.Text) > player.Price)
             {
-                AddPlayer(player);
-                TeamScore_TXTBLK.Text = (double.Parse(TeamScore_TXTBLK.Text) + player.Rating).ToString();
-                TeamValue_TXTBLK.Text = (double.Parse(TeamValue_TXTBLK.Text) + player.Price).ToString();
+                AddPLayerToGUI(player);
+                TeamScore_TXTBLK.Text = createdTeam.GetTeamScore().ToString();
+                TeamValue_TXTBLK.Text = createdTeam.GetTeamPrice().ToString();
                 if (RemainingBudget_TXTBLK.Text != "∞")
                     RemainingBudget_TXTBLK.Text = (double.Parse(RemainingBudget_TXTBLK.Text) - player.Price).ToString();
             }
@@ -334,21 +334,36 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
         {
             double price = await GetPlayerPrice(Player1ID_TXTBLK.Text, Player1Position_TXTBLK.Text);
             Player player = new Player(Player1Name_TXTBLK.Text, (BitmapImage)Player1Image_IMG.Source, Player1Position_TXTBLK.Text, price);
-            AddPlayerAndStatsTotals(player);
+            AddPlayersStatsAndTotals(player);
         }
 
         private async void Player2_BTN_Click(object sender, RoutedEventArgs e)
         {
             double price = await GetPlayerPrice(Player2ID_TXTBLK.Text, Player2Position_TXTBLK.Text);
             Player player = new Player(Player2Name_TXTBLK.Text, (BitmapImage)Player2Image_IMG.Source, Player2Position_TXTBLK.Text, price);
-            AddPlayerAndStatsTotals(player);
+            AddPlayersStatsAndTotals(player);
         }
 
         private async void Player3_BTN_Click(object sender, RoutedEventArgs e)
         {
             double price = await GetPlayerPrice(Player3ID_TXTBLK.Text, Player3Position_TXTBLK.Text);
             Player player = new Player(Player3Name_TXTBLK.Text, (BitmapImage)Player3Image_IMG.Source, Player3Position_TXTBLK.Text, price);
-            AddPlayerAndStatsTotals(player);
+            AddPlayersStatsAndTotals(player);
+        }
+
+        private void Load_BTN_Click(object sender, RoutedEventArgs e)
+        {
+            List<Player> players = createdTeam.LoadGame();
+            foreach (Player player in players)
+            {
+                AddPLayerToGUI(player);
+                AddPlayersStatsAndTotals(player);
+            }
+        }
+
+        private void Save_BTN_Click(object sender, RoutedEventArgs e)
+        {
+            createdTeam.SaveGame();
         }
     }
 }

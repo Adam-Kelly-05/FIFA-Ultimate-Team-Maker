@@ -211,8 +211,8 @@
             <TextBlock Text="0" x:Name="TeamValue_TXTBLK" Foreground="White" Grid.Column="3" HorizontalAlignment="Left" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center" Width="54" Grid.ColumnSpan="2" Margin="56,0,0,0"/>
             <TextBlock Text="Budget (m):" Grid.Column="5" Foreground="White" HorizontalAlignment="Left" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center" Width="95" Grid.ColumnSpan="2"/>
             <TextBlock Text="0" x:Name="RemainingBudget_TXTBLK" Foreground="White" Grid.Column="6" HorizontalAlignment="Left" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center" Width="55" Margin="3,0,0,0"/>
-            <Button Grid.Column="7" Content="Load" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="50" Background="Black" BorderBrush="White" Foreground="White"/>
-            <Button Grid.Column="8" Content="Save" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="50" Background="Black" BorderBrush="White" Foreground="White"/>
+            <Button x:Name="Load_BTN" Grid.Column="7" Content="Load" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="50" Background="Black" BorderBrush="White" Foreground="White" Click="Load_BTN_Click"/>
+            <Button x:Name="Save_BTN" Grid.Column="8" Content="Save" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="50" Background="Black" BorderBrush="White" Foreground="White" Click="Save_BTN_Click"/>
         </Grid>
     </Grid>
 </Window>
