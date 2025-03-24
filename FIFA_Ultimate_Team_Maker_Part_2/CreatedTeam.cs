@@ -71,9 +71,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
             using (StreamWriter sw = File.CreateText(path))
             {
                 foreach (Player player in AllPlayers)
-                {
                     sw.WriteLine($"{player.Name},{player.Photo},{player.Position},{player.Price}");
-                }
             }
         }
 
