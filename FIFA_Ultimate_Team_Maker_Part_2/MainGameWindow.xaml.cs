@@ -39,36 +39,6 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                 RemainingBudget_TXTBLK.Text = mainWindow.budget.ToString();
         }
 
-        //private void ClearOldResults()
-        //{
-        //    Player1Name_TXTBLK.Text = string.Empty;
-        //    Player1Country_TXTBLK.Text = string.Empty;
-        //    Player1Age_TXTBLK.Text = string.Empty;
-        //    Player1ID_TXTBLK.Text = string.Empty;
-        //    Player1_BTN.Opacity = 0;
-        //    Player1Image_IMG.Source = null;
-        //    Player1Position_TXTBLK.Text = string.Empty;
-        //    Player1Border_BDR.Opacity = 0;
-
-        //    Player2Name_TXTBLK.Text = string.Empty;
-        //    Player2Country_TXTBLK.Text = string.Empty;
-        //    Player2Age_TXTBLK.Text = string.Empty;
-        //    Player2ID_TXTBLK.Text = string.Empty;
-        //    Player2_BTN.Opacity = 0;
-        //    Player2Image_IMG.Source = null;
-        //    Player2Position_TXTBLK.Text = string.Empty;
-        //    Player2Border_BDR.Opacity = 0;
-
-        //    Player3Name_TXTBLK.Text = string.Empty;
-        //    Player3Country_TXTBLK.Text = string.Empty;
-        //    Player3Age_TXTBLK.Text = string.Empty;
-        //    Player3ID_TXTBLK.Text = string.Empty;
-        //    Player3_BTN.Opacity = 0;
-        //    Player3Image_IMG.Source = null;
-        //    Player3Position_TXTBLK.Text = string.Empty;
-        //    Player3Border_BDR.Opacity = 0;
-        //}
-
         private void AddPLayerToGUI(Player player, bool manual)
         {
             if (player.Position == "Attacker" || player.Position == "Midfielder" || player.Position == "Defender" || player.Position == "Goalkeeper")
@@ -219,7 +189,7 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
 
                 JToken player = responseJSON["response"];
 
-                if (player[0] != null)
+                if (player.Count() >= 1)
                 {
                     Player1Border_BDR.BorderBrush = Brushes.White;
                     Player1Name_TXTBLK.Text = player[0]["player"]["name"].ToString();
@@ -230,8 +200,19 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                     Player1Position_TXTBLK.Text = player[0]["player"]["position"].ToString();
                     Player1_BTN.Opacity = 100;
                 }
+                else
+                {
+                    Player1Name_TXTBLK.Text = string.Empty;
+                    Player1Country_TXTBLK.Text = string.Empty;
+                    Player1Age_TXTBLK.Text = string.Empty;
+                    Player1ID_TXTBLK.Text = string.Empty;
+                    Player1_BTN.Opacity = 0;
+                    Player1Image_IMG.Source = null;
+                    Player1Position_TXTBLK.Text = string.Empty;
+                    Player1Border_BDR.Opacity = 0;
+                }
 
-                if (player[1] != null)
+                if (player.Count() >= 2)
                 {
                     Player2Border_BDR.BorderBrush = Brushes.White;
                     Player2Name_TXTBLK.Text = player[1]["player"]["name"].ToString();
@@ -242,8 +223,19 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                     Player2Position_TXTBLK.Text = player[1]["player"]["position"].ToString();
                     Player2_BTN.Opacity = 100;
                 }
+                else
+                {
+                    Player2Name_TXTBLK.Text = string.Empty;
+                    Player2Country_TXTBLK.Text = string.Empty;
+                    Player2Age_TXTBLK.Text = string.Empty;
+                    Player2ID_TXTBLK.Text = string.Empty;
+                    Player2_BTN.Opacity = 0;
+                    Player2Image_IMG.Source = null;
+                    Player2Position_TXTBLK.Text = string.Empty;
+                    Player2Border_BDR.Opacity = 0;
+                }
 
-                if (player[2] != null)
+                if (player.Count() >= 3)
                 {
                     Player3Border_BDR.BorderBrush = Brushes.White;
                     Player3Name_TXTBLK.Text = player[2]["player"]["name"].ToString();
@@ -254,8 +246,19 @@ namespace FIFA_Ultimate_Team_Maker_Part_2
                     Player3Position_TXTBLK.Text = player[2]["player"]["position"].ToString();
                     Player3_BTN.Opacity = 100;
                 }
+                else
+                {
+                    Player3Name_TXTBLK.Text = string.Empty;
+                    Player3Country_TXTBLK.Text = string.Empty;
+                    Player3Age_TXTBLK.Text = string.Empty;
+                    Player3ID_TXTBLK.Text = string.Empty;
+                    Player3_BTN.Opacity = 0;
+                    Player3Image_IMG.Source = null;
+                    Player3Position_TXTBLK.Text = string.Empty;
+                    Player3Border_BDR.Opacity = 0;
+                }
 
-                if (player[0] == null && player[1] == null && player[2] == null)
+                if (player.Count() < 1)
                     MessageBox.Show("No Results!");
             }
         }
